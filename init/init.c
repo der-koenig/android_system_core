@@ -107,6 +107,7 @@ static time_t process_needs_restart;
 static const char *ENV[32];
 
 static unsigned emmc_boot = 0;
+static unsigned int boot_reason = 0;
 
 static unsigned charging_mode = 0;
 
@@ -817,6 +818,9 @@ static void import_kernel_nv(char *name, int for_emulator)
 #endif
     } else if (!strcmp(name,BOARD_CHARGING_CMDLINE_NAME)) {
         strlcpy(battchg_pause, value, sizeof(battchg_pause));
+    } else if (!strcmp(name,"startup")) {
+        int ret = sscanf(value, "%x", &boot_reason);
+        property_set("ro.bootreason", value);
     } else if (!strncmp(name, "androidboot.", 12) && name_len > 12) {
         const char *boot_prop_name = name + 12;
         char prop[PROP_NAME_MAX];
@@ -1177,7 +1181,7 @@ int main(int argc, char **argv)
     restorecon("/dev/__properties__");
     restorecon_recursive("/sys");
 
-    is_charger = !strcmp(bootmode, "charger");
+    is_charger = (boot_reason == 0x40 || boot_reason == 0x80) || !strcmp(bootmode, "charger");
 
     INFO("property init\n");
     if (!is_charger)
