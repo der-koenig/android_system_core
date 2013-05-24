@@ -1243,6 +1243,7 @@ int main(int argc, char **argv)
         is_charger = 1;
 
     if (is_charger) {
+        action_for_each_trigger("early-charger", action_add_queue_tail);
         action_for_each_trigger("charger", action_add_queue_tail);
     } else {
         action_for_each_trigger("early-boot", action_add_queue_tail);
