@@ -102,6 +102,7 @@ struct {
     { "wc_transport.",     AID_BLUETOOTH,   AID_SYSTEM },
     { "net.pdp",          AID_RADIO,    AID_RADIO },
     { "service.bootanim.exit", AID_GRAPHICS, 0 },
+    { "hw.fm.",           AID_FM_RADIO,  0 },
 #ifdef PROPERTY_PERMS_APPEND
 PROPERTY_PERMS_APPEND
 #endif
@@ -122,6 +123,7 @@ struct {
 } control_perms[] = {
     { "dumpstate",AID_SHELL, AID_LOG },
     { "ril-daemon",AID_RADIO, AID_RADIO },
+    { "fm_dl", AID_FM_RADIO, AID_FM_RADIO },
 #ifdef CONTROL_PERMS_APPEND
 CONTROL_PERMS_APPEND
 #endif

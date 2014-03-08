@@ -78,6 +78,7 @@
 #define AID_SDCARD_ALL    1035  /* access all users external storage */
 #define AID_AUDIT         1036  /* audit daemon */
 
+#define AID_FM_RADIO      1299  /* FM radio */
 #define AID_THEMEMAN      1300  /* theme manager */
 
 #define AID_SHELL         2000  /* adb and debug shell user */
@@ -208,6 +209,7 @@ static const struct android_id_info android_ids[] = {
     { "nobody",        AID_NOBODY, },
     { "theme_man", AID_THEMEMAN },
     { "audit",      AID_AUDIT, },
+    { "fm_radio",  AID_FM_RADIO, },
 };
 
 #define android_id_count \

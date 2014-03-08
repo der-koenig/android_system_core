@@ -58,6 +58,9 @@ typedef enum {
     AUDIO_STREAM_TTS              = 9,
 #ifdef QCOM_HARDWARE
     AUDIO_STREAM_INCALL_MUSIC     = 10,
+#ifdef QCOM_FM_ENABLED
+    AUDIO_STREAM_FM               = 11,
+#endif
 #endif
 
     AUDIO_STREAM_CNT,
